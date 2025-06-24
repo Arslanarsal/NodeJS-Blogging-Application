@@ -25,11 +25,9 @@ const userScheme = mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ["USER", "ADMIN"],
         default: "USER",
     }
 })
-
 
 userScheme.pre("save", function (next) {
     const user = this;
@@ -43,8 +41,6 @@ userScheme.pre("save", function (next) {
     next();
 
 })
-
-
 
 const user = mongoose.model("user", userScheme)
 module.exports = user

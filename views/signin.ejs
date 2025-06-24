@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs') %>
+    <title>Sign In</title>
+    <!-- Make sure Bootstrap CSS is included in head.ejs -->
+</head>
+
+<body class="bg-light">
+    <%- include('./partials/navbar.ejs') %>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3 class="mb-0">User Sign In</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="/user/signin" method="post">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" name="email" id="email" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" required>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Sign In</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <p class="mb-0">
+                        Don’t have an account?
+                        <a href="/signup" class="text-primary fw-bold">Create one</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>
