@@ -1,4 +1,5 @@
 const userModel = require('../models/user.js')
+const blogModel = require('../models/blog.js')
 const { createHmac } = require('node:crypto');
 const { generateToken } = require('../utils/tokenService.js')
 
@@ -38,4 +39,16 @@ const signinUser = async function (req, res) {
 
 }
 
-module.exports = { registerUser, signinUser }
+const createBlog = async function (req, res) {
+    const { title, body } = req.body;
+    const filename = (req.file) ? req.file.filename : ("default.png")
+    const blog = await blogModel.create({
+        title,
+        body,
+        coverImg: filename,
+        createdBy: req.user.id,
+    })
+    res.redirect('/blog')
+}
+
+module.exports = { registerUser, signinUser, createBlog }

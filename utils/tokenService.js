@@ -1,7 +1,12 @@
 const jwt = require('jsonwebtoken')
 
 const generateToken = function (user) {
-    return jwt.sign({ email: user.email }, process.env.JWT_KEY)
+    const payload = {
+        email: user.email,
+        id: user._id,
+        userName: user.userName
+    }
+    return jwt.sign(payload, process.env.JWT_KEY)
 }
 
 const verfiyToken = function (token) {
